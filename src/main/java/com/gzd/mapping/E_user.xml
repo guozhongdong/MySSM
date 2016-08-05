@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gzd.dao.PersonMapper">
+<mapper namespace="com.gzd.dao.E_userMapper">
     <!-- 查询所有person -->  
-    <select id="queryAll" resultType="Person" >  
-        select * from person  
+    <select id="queryAll" resultType="E_user" >  
+        select * from e_user 
     </select>
+    <insert >
+    
+    
+    </insert>
 </mapper>
