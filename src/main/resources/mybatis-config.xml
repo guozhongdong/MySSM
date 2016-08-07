@@ -11,6 +11,6 @@
     </typeAliases> 
     <mappers>  
         <mapper resource="com/gzd/mapping/PersonMapper.xml" /> 
-        <mapper resource="com/gzd/mapping/E_userMapper.xml" />  
+        <mapper resource="com/gzd/mapping/E_user.xml" />  
     </mappers>
 </configuration>

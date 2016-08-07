@@ -6,4 +6,6 @@
     <select id="queryAll" resultType="Person" >  
         select * from person  
     </select>
+    
+    
 </mapper>
