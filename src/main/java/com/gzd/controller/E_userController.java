@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,38 +71,16 @@ public class E_userController {
         return "pages/main/showUser";
 		
 	}
-	@RequestMapping("demouser1")
 	@ResponseBody
-	public String    queryUser1(Model model){
-		Map<String, Object> map = new HashMap<String, Object>();
+	@RequestMapping(value="demouser1", produces={"application/json;charset=UTF-8"})
+	public String    queryUser1(){
+		//解决中文乱码
 		List<E_user> userdemos = userService.loadQueryUser();
-		JSONArray array = new JSONArray();
-		Map<String,Object> rstMap = new HashMap<String,Object>();
-		rstMap.put("rows", userdemos);
-		rstMap.put("total", 5);
-		 /* for(E_user user:userdemos){  
-	             JSONObject jsonObject = new JSONObject();  
-	             jsonObject.put("id",user.getId()) ;  
-	             jsonObject.put("username",user.getUsername()); 
-	             jsonObject.put("password",user.getPassword()); 
-	             jsonObject.put("sex",user.getSex()); 	             
-	             jsonObject.put("age", user.getAge());  
-	             jsonObject.put("phone",user.getPhone());  
-	             jarray.add
-	            // jarray.a
-	        } */
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("rows", userdemos);
 		jsonObject.put("total", 5);
 		//array.put(rstMap);
 		System.out.println(jsonObject.toString());
-	
-       // model.addAttribute("rows111", array);
-       
-    //    return "pages/main/showUser";
-	//	return new ModelAndView("pages/main/showUser", rstMap);
-     //   return JSONObject.fromObject(rstMap);
-	//	return "pages/main/showUser";
         return jsonObject.toString();
         
 	}

@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 		this.e_usermapper = e_usermapper;
 	}
 
-	@Override
 	public List<E_user> loadQueryUser() {
 		
 		

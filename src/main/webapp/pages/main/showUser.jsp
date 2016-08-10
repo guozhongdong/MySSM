@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="../resources/jquery-easyui-1.5/jquery.easyui.min.js"></script
 <title>展示所有用户</title>
 <script type="text/javascript">
-     alert('<%=basePath%>')
+     //alert('<%=basePath%>')
 	$(function(){
             $("#dg").datagrid({
                 height: 500,
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="margin:20px 0;"></div>
 	
 	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
-			data-options="singleSelect:true,collapsible:true,url:'/MySSM/demouser1.action',method:'get'">
+			data-options="singleSelect:true,collapsible:true,url:'/MySSM/demouser1.action',method:'post'">
 		<thead>
 			<tr>
 				<th data-options="field:'id',width:80">主键id</th>
