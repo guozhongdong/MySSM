@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +25,7 @@ import com.sun.media.sound.JavaSoundAudioClip;
 
 @Controller
 public class E_userController {
-
+	
 	private IPersonService personService;
     
     public IPersonService getPersonService() {
@@ -84,5 +85,13 @@ public class E_userController {
         return jsonObject.toString();
         
 	}
-	
+	@RequestMapping(value="insertUser")
+	public void insertUser(String username,String password){
+		//String name = request.getParameter("username");
+		//System.out.println(req.getParameter("username"));
+		//System.out.println(req.getParameter("password"));
+		System.out.println(username);
+		System.out.println("≤Â»Î");
+		
+	}
 }

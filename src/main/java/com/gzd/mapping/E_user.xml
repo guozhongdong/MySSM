@@ -6,4 +6,9 @@
     <select id="queryUser" resultType="E_user" >  
         select * from e_user 
     </select> 
+    <insert id="insert" >
+    
+    	insert into e_user(id,username,password,loginid) values();
+    
+    </insert>
 </mapper>

@@ -5,7 +5,7 @@ public class E_user {
 	private int id;
 	private String username;
 	private String password;
-	private int loginid;
+	private String loginid;
 	private int age;
 	private int sex;
 	private String email;
@@ -31,10 +31,11 @@ public class E_user {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getLoginid() {
+	
+	public String getLoginid() {
 		return loginid;
 	}
-	public void setLoginid(int loginid) {
+	public void setLoginid(String loginid) {
 		this.loginid = loginid;
 	}
 	public int getAge() {

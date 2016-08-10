@@ -17,38 +17,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="../resources/jquery-easyui-1.5/jquery.easyui.min.js"></script
 <title>展示所有用户</title>
 <script type="text/javascript">
-     //alert('<%=basePath%>')
-	$(function(){
-            $("#dg").datagrid({
-                height: 500,
-                nowrap: true,
-                striped: true,
-                url: '<%=basePath%>demouser1.action',
-                columns: [[{
-                    field: 'id',
-                    title: '主键',
-                    width: 100
-
-                }, {
-                    field: 'username',
-                    title: '身份证号',
-                    width: 120
-                }
-                ]],
-                pagination: true,
-                rownumbers: true
-            });
-        });
+    
 </script>
 </head>
 <body>
 
-	<h2>Basic DataGrid</h2>
-	<p>The DataGrid is created from markup, no JavaScript code needed.</p>
+	<h2>基础表格</h2>
 	<div style="margin:20px 0;"></div>
 	
 	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
-			data-options="singleSelect:true,collapsible:true,url:'/MySSM/demouser1.action',method:'post'">
+			data-options="rownumbers:true,toolbar:'#tb',singleSelect:true,collapsible:true,nowrap:true,url:'/MySSM/demouser1.action',method:'post'">
 		<thead>
 			<tr>
 				<th data-options="field:'id',width:80">主键id</th>
@@ -60,8 +38,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</thead>
 	</table>
-	<table id="dg" >
-		
-	</table>
+	<div id="tb" style="height:auto">
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">新增</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>
+		<!-- <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a>
+		 -->
+	</div>
+	<script type="text/javascript">
+	     function append(){
+	    	 
+	     }
+	
+	</script>
+	
 </body>
 </html>
