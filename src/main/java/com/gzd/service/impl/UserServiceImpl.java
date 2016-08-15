@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		
 		return e_usermapper.queryUser();
 	}
-
+	
 	
 	public static void main(String[] args) {
 		
@@ -37,4 +37,17 @@ public class UserServiceImpl implements UserService {
 			System.out.println(list.get(i));
 		}
 	}
+	public void inserInto(E_user e_user) {
+		
+		e_usermapper.insert(e_user);
+	}
+	public void deleteOne(int id) {
+		// TODO Auto-generated method stub
+		e_usermapper.delete(id);
+	}
+	public void updateOne(E_user e_user) {
+		
+		e_usermapper.updateUser(e_user);
+	}
+	
 }

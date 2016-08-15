@@ -25,8 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<h2>基础表格</h2>
 	<div style="margin:20px 0;"></div>
 	
-	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
-			data-options="rownumbers:true,toolbar:'#tb',singleSelect:true,collapsible:true,nowrap:true,url:'/MySSM/demouser1.action',method:'post'">
+	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px" url="/MySSM/demouser1.action"
+			rownumbers="true" toolbar="#tb" singleSelect="true" nowrap="true" collapsible="true" pagination="true" fitColumns="true"
+			>
 		<thead>
 			<tr>
 				<th data-options="field:'id',width:80">主键id</th>
@@ -50,6 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     function append(){
 	    	 
 	     }
+	     
+	    
 	
 	</script>
 	

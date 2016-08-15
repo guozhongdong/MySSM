@@ -7,4 +7,7 @@ import com.gzd.model.E_user;
 public interface UserService {
 
 	List<E_user> loadQueryUser();
+	public void inserInto(E_user e_user);
+	public void deleteOne(int id);
+	public void updateOne(E_user e_user);
 }

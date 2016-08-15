@@ -12,20 +12,8 @@
 <script type="text/javascript" src="../resources/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 <title>后台管理系统</title>
 <script type="text/javascript">
-  $(function(){
-	  
-	  
-	  
-	  
-  });
-  //打开 复选框
-  function append(){
-	  
-	  $("#addDialog").dialog('open');
-	//  $("#addDialog").dialog('open');
-
-  }
-
+ 
+  
 </script>
 
 </head>
@@ -40,34 +28,30 @@
 	<div data-options="region:'east',split:true,title:'East'" style="width:100px;padding:10px;">east region</div>
 	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
 	<div data-options="region:'center',title:'xxx 欢迎你！'"> 
-		<table class="easyui-datagrid" title="用户列表" style="width:700px;height:250px"
+		<table id="dg" class="easyui-datagrid" fitColumns="true" pagination="true" title="用户列表" style="width:700px;height:400px"
 			data-options="rownumbers:true,toolbar:'#tb',singleSelect:true,collapsible:true,nowrap:true,url:'/MySSM/demouser1.action',method:'post'">
 		<thead>
 			<tr>
-				<th data-options="field:'id',width:80">主键id</th>
-				<th data-options="field:'username',width:100">用户名</th>
-				<th data-options="field:'password',width:80,align:'right'">密码</th>
-				<th data-options="field:'age',width:80,align:'right'">年龄</th>
-				<th data-options="field:'sex',width:250">性别</th>
-				<th data-options="field:'phone',width:60,align:'center'">电话</th>
+			   <!-- 
+				<th data-options="field:'id',width:80">主键id</th> -->
+				<th data-options="field:'username',width:150,align:'center'">用户名</th>
+				<th data-options="field:'password',width:120,align:'center'">密码</th>
+				<th data-options="field:'age',width:120,align:'center'">年龄</th>
+				<th data-options="field:'sex',width:80,align:'center'">性别</th>
+				<th data-options="field:'phone',width:160,align:'center'">电话</th>
 			</tr>
 		</thead>
 		</table>
 		<div id="tb" style="height:auto">
-			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">新增</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="newuser()">新增</a>
+			 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">修改</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>
-			<!-- <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a>
-			 -->
 		</div>
-	
-	
 	</div>
-	<div id="addDialog" class="easyui-dialog" closed="true" title="新增用户" 
+	<div id="addDialog" class="easyui-dialog" closed="true"  buttons="#dlg-buttons" 
 		data-options="iconCls:'icon-add'
-					" style="width:300px;height:400px;padding:10px">
-	     <form id="ff" method="post" action="/MySSM/insertUser.action" class="easyui-form"  style="height:80%;" enctype="multipart/form-data">
+					" style="width:300px;height:280px;padding:10px">
+	     <form id="ff" method="post" action="" class="easyui-form"  style="height:80%;" >
 
 			<table cellpadding="5">
 	    		<tr>
@@ -80,39 +64,100 @@
 	    		</tr>
 	    		<tr>
 	    			<td>密码:</td>
-	    			<td><input class="easyui-textbox" type="text" name="password" data-options="required:true"></input></td>
+	    			<td><input class="easyui-textbox" type="password" name="password" data-options="required:true"></input></td>
 	    		</tr>
 	    		<tr>
-	    			<td>邮箱:</td>
-	    			<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"></input></td>
+	    			<td>年龄:</td>
+	    			<td><input class="easyui-textbox" type="text" name="age" data-options="required:true"></input></td>
 	    		</tr> 
 	    		<tr>
 	    			<td>性别:</td>
 	    			<td><select class="easyui-combobox" style="width:50px">
 	    			       <option value="1">男</option>
 	    			       <option value="0">女</option>
-	    			 	</select>
-	    			 
+	    			 	</select>    			 
 	    			 </td>
-	    		</tr>   		
-	    		
+	    		</tr>   		    		
 	    	</table>
-	     </form>
-	     <div style="text-align:center;padding:5px">
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清除</a>
-	    </div>
-	    <script>
+	     </form>		  
+	</div>
+	<div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#addDialog').dialog('close')" style="width:90px">Cancel</a>
+    </div>
+   	<script type="text/javascript">
+   	  	var url;
+	   	function newuser(){
+	        $('#addDialog').dialog('open').dialog('center').dialog('setTitle','新增用户');
+	        $('#ff').form('clear');
+	        url = '/MySSM/insertUser.action';
+	    }
+	   	
+	   	function saveUser(){
+            $('#ff').form('submit',{
+                url: url,
+                onSubmit: function(){
+                    return $(this).form('validate');
+                },
+                success: function(result){
+                    var result = eval('('+result+')');
+                    if(result >0 ){
+                    	$.messager.alert('提示', '保存成功！', 'info');
+                    	 $('#addDialog').dialog('close');        // close the dialog
+                         $('#dg').datagrid('reload'); 
+                    	
+                    }
+
+                }
+            });
+        }
+	   	
+	   	function editUser(){
+	   		
+	        var row = $('#dg').datagrid('getSelected');
+	       
+	        if (row){
+	        	 console.log(row.id);
+	            $('#addDialog').dialog('open').dialog('center').dialog('setTitle','修改用户');
+	            $('#ff').form('load',row);
+	            url = '/MySSM/updateUser.action?id='+row.id;
+	        }else{
+	        	$.messager.alert('提示', '请选择一条记录修改！', 'info');
+	        	
+	        }
+	    }
+	    	
+	    //删除行数据
+	    function removeit(){
+	        var row = $('#dg').datagrid('getSelected');
+	        if (row){
+	            $.messager.confirm('确认','确定要删除这个用户吗?',function(r){
+	                if (r){
+	                    $.post('/MySSM/deleteUser.action',{id:row.id},function(result){
+	                        if (result.success){
+	                        	$.messager.alert('提示', '删除成功！', 'info');
+	                            $('#dg').datagrid('reload');                             
+	                        } else {
+	                            $.messager.show({    // show error message
+	                                title: 'Error',
+	                                msg: result.errorMsg
+	                            });
+	                        }
+	                    },'json');
+	                }
+	            });
+	        }
+	    }
+
 		function submitForm(){
 			
 			$('#ff').form('submit');
+			$("#addDialog").dialog("close");
 		}
 		function clearForm(){
 			$('#ff').form('clear');
 		}
 	</script>
-		  
-	</div>
 
 </body>
 </html>

@@ -1,27 +1,20 @@
 package com.gzd.controller;
 
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.gzd.model.E_user;
 import com.gzd.model.Person;
 import com.gzd.service.IPersonService;
 import com.gzd.service.UserService;
-import com.sun.media.sound.JavaSoundAudioClip;
+
 
 @Controller
 public class E_userController {
@@ -86,12 +79,54 @@ public class E_userController {
         
 	}
 	@RequestMapping(value="insertUser")
-	public void insertUser(String username,String password){
+	public void  insertUser(E_user e_user,HttpServletRequest req,HttpServletResponse res){
 		//String name = request.getParameter("username");
 		//System.out.println(req.getParameter("username"));
 		//System.out.println(req.getParameter("password"));
-		System.out.println(username);
-		System.out.println("插入");
+		userService.inserInto(e_user);
+	//	Map<String, String> map = new HashMap<String, String>();
+	//	map.put("result", "1");
+	//	map.put("errorMsg", "保存失败！");
+		try {
+			res.getWriter().print(1);    //保存成功 返回页面1
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("插入数据成功！");
+		
+
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="deleteUser", produces={"application/json;charset=UTF-8"})
+	public String deleteUser(int id){
+		userService.deleteOne(id);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("success", true);
+	//	jsonObject.put("total", 5);
+		//array.put(rstMap);
+		System.out.println(jsonObject.toString());
+        return jsonObject.toString();
+		
+	//	System.out.println(id);
+	//	System.out.println("我是删除");
+	}
+	
+	@RequestMapping(value="updateUser")
+	public void updateUser(E_user e_user){
+		
+		userService.updateOne(e_user);
+		System.out.println(e_user.getId());
+		System.out.println("修改成功！");
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

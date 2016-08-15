@@ -6,9 +6,21 @@
     <select id="queryUser" resultType="E_user" >  
         select * from e_user 
     </select> 
-    <insert id="insert" >
-    
-    	insert into e_user(id,username,password,loginid) values();
-    
+    <insert id="insert" parameterType="E_user" useGeneratedKeys="true" keyProperty="id">
+    	insert into e_user(username,password,loginid,age) 
+    	values(#{username},#{password},#{loginid},#{age});   
     </insert>
+    <update id="updateUser" parameterType="E_user">     
+        update e_user set 
+        username = #{username},
+        loginid = #{loginid},
+        password = #{password},     
+        age = #{age} 
+        where 
+        id = #{id}
+    
+    </update>
+    <delete id="delete" parameterType="int" >
+      delete from e_user where id=#{id}   
+    </delete>
 </mapper>
