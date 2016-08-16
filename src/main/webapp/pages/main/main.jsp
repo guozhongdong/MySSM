@@ -1,5 +1,8 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,18 +11,33 @@
 <link rel="stylesheet" href="../resources/jquery-easyui-1.5/themes/default/easyui.css" type="text/css">
 <link rel="stylesheet" href="../resources/jquery-easyui-1.5/themes/icon.css" type="text/css">
 <script type="text/javascript" src="../resources/jquery-easyui-1.5/jquery.min.js"></script>
-<script type="text/javascript" src="../resources/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="../resources/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../resources/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+
 <title>后台管理系统</title>
 <script type="text/javascript">
+ $(function(){
+	 
+	 $(window).resize(function() {
+			$('#dg').datagrid('resize');
+		});
+ })
+ function searchUser(){
+		var params = {};
+		params.username = $('#username').val();
+		params.loginid = $('#loginid').val();			
+		alert(params.username+"---"+params.loginid);
+		$('#dg').datagrid('options').queryParams = params;
+		$('#dg').datagrid('reload');
+ }
  
   
 </script>
 
 </head>
-
-</head>
+dsdfsdf
 <body class="easyui-layout">
+
 	<div data-options="region:'north'" style="height:60px;background:#B3DFDA;padding:10px">
 		页面大标题
 	
@@ -29,13 +47,13 @@
 	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
 	<div data-options="region:'center',title:'xxx 欢迎你！'"> 
 		<table id="dg" class="easyui-datagrid" fitColumns="true" pagination="true" title="用户列表" style="width:700px;height:400px"
-			data-options="rownumbers:true,toolbar:'#tb',singleSelect:true,collapsible:true,nowrap:true,url:'/MySSM/demouser1.action',method:'post'">
+			rownumbers="true" toolbar="#tb" singleSelect=true collapsible=true nowrap=true url="/MySSM/demouser1.action" method="post">
 		<thead>
 			<tr>
 			   <!-- 
 				<th data-options="field:'id',width:80">主键id</th> -->
 				<th data-options="field:'username',width:150,align:'center'">用户名</th>
-				<th data-options="field:'password',width:120,align:'center'">密码</th>
+				<th data-options="field:'loginid',width:120,align:'center'">登陆id</th>
 				<th data-options="field:'age',width:120,align:'center'">年龄</th>
 				<th data-options="field:'sex',width:80,align:'center'">性别</th>
 				<th data-options="field:'phone',width:160,align:'center'">电话</th>
@@ -43,6 +61,12 @@
 		</thead>
 		</table>
 		<div id="tb" style="height:auto">
+		 <form action="" name="doSearch" id="doSearch" method="post">
+				用户名: <input class="easyui-textbox" style="width:110px" name="username" id="username">
+        		登录名: <input class="easyui-textbox" style="width:110px"name="loginid" id="loginid" >
+        		<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="searchUser()">查询</a>
+       	</form>
+		
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="newuser()">新增</a>
 			 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">修改</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>

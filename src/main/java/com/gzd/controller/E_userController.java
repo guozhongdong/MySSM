@@ -54,26 +54,27 @@ public class E_userController {
 	}
 	@RequestMapping("/demouser")
 	public String queryUser(Model model){
-		List<E_user> userdemos = userService.loadQueryUser();
-		for(E_user e :userdemos){
+		//List<E_user> userdemos = userService.loadQueryUser();
+		/*for(E_user e :userdemos){
 			System.out.println(e.getId());
 			System.out.println(e.getPassword());
 			System.out.println(e.getUsername());
 		}
 		
-        model.addAttribute("userdemo", userdemos);
+        model.addAttribute("userdemo", userdemos);*/
         return "pages/main/showUser";
 		
 	}
 	@ResponseBody
 	@RequestMapping(value="demouser1", produces={"application/json;charset=UTF-8"})
-	public String    queryUser1(){
+	public String queryUser1(E_user e_user){
 		//解决中文乱码
-		List<E_user> userdemos = userService.loadQueryUser();
+		List<E_user> userdemos = userService.loadQueryUser(e_user);
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("rows", userdemos);
 		jsonObject.put("total", 5);
 		//array.put(rstMap);
+		System.out.println();
 		System.out.println(jsonObject.toString());
         return jsonObject.toString();
         

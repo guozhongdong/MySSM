@@ -22,17 +22,17 @@ public class UserServiceImpl implements UserService {
 		this.e_usermapper = e_usermapper;
 	}
 
-	public List<E_user> loadQueryUser() {
+	public List<E_user> loadQueryUser(E_user e_user) {
 		
 		
-		return e_usermapper.queryUser();
+		return e_usermapper.queryUser(e_user);
 	}
 	
 	
 	public static void main(String[] args) {
 		
 		UserServiceImpl uServiceImpl = new UserServiceImpl();
-		List<E_user> list = uServiceImpl.loadQueryUser();
+		List<E_user> list = uServiceImpl.loadQueryUser(null);
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i));
 		}

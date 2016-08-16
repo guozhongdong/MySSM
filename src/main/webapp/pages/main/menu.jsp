@@ -6,17 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>左部菜单</title>
 </head>
+
+    
+
+    <% 
+        String sss = request.getRequestURI().toString();
+    	String s2 = request.getServletPath();
+    	out.println(sss); 
+    	
+    	out.println(s2);
+    %>  
+
 <body>
-1111111111111111111111111111111111111111111
-  我是左边菜单
-2222222222222222222222222
 
-沙发上放大时打发斯蒂芬
+asfasdfas
 
-16:06修改
-2016年8月5日16:10:28
-也要以耶耶耶耶耶耶耶耶耶
-再次修改
-999892324234234
 </body>
 </html>

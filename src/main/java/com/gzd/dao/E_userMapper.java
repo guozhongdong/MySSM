@@ -16,7 +16,7 @@ public interface E_userMapper {
      * ²éÑ¯ËùÓĞ
      * @return
      */
-   List<E_user> queryUser();
+   List<E_user> queryUser(E_user e_user);
    
    public void delete(int id);
    

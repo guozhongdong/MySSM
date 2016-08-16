@@ -3,8 +3,18 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gzd.dao.E_userMapper">
     <!-- 查询所有person -->  
-    <select id="queryUser" resultType="E_user" >  
-        select * from e_user 
+    <select id="queryUser" resultType="E_user"  parameterType="E_user">  
+        select t.id,t.username,t.password,t.loginid,t.age,t.sex,t.phone from e_user t 
+        <where>
+           1=1
+           <if test="username != null and username !='' ">
+              and t.username like concat(concat('%', #{username}),'%')   
+           </if>
+           <if test="loginid != null and loginid !='' ">
+             and t.loginid = #{loginid}   
+           </if>
+        
+        </where>
     </select> 
     <insert id="insert" parameterType="E_user" useGeneratedKeys="true" keyProperty="id">
     	insert into e_user(username,password,loginid,age) 
