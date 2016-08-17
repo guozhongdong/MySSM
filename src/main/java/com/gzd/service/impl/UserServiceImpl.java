@@ -27,16 +27,7 @@ public class UserServiceImpl implements UserService {
 		
 		return e_usermapper.queryUser(e_user);
 	}
-	
-	
-	public static void main(String[] args) {
-		
-		UserServiceImpl uServiceImpl = new UserServiceImpl();
-		List<E_user> list = uServiceImpl.loadQueryUser(null);
-		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i));
-		}
-	}
+
 	public void inserInto(E_user e_user) {
 		
 		e_usermapper.insert(e_user);
