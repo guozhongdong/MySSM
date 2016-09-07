@@ -133,6 +133,39 @@
     </dependencies>
    
   <build>
-    <finalName>MySSM</finalName> 
+    <finalName>MySSM</finalName>
+    <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+    
+    
+    <plugins>
+    	<plugin>
+    		<groupId>org.apaceh.maven.plugins</groupId>
+    		<artifactId>maven-compiler-plugin</artifactId>
+    		<version>3.2</version>
+    		<configuration>
+    			<source>1.7</source>
+    			<target>1.7</target>
+    		</configuration>
+    	</plugin>
+    	<plugin>
+    		<groupId>org.apache.tomcat.maven</groupId>
+    		<artifactId>tomcat6-maven-plugin</artifactId>
+    		<version>2.2</version>
+    		<configuration>
+    			<port>8787</port>
+    		</configuration>
+    	</plugin>
+    </plugins> 
   </build>
 </project>

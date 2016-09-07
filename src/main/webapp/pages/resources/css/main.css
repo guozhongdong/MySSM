@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+html .windowsTable { margin:10px 5% 0 5% ; width:90%;}
+html .windowsTable td { padding-top:4px;}
+html .windowsTable th { text-align: right; padding-right:6px; font-weight: normal; font-size:14px;}
