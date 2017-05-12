@@ -1,8 +1,8 @@
 package com.gzd.service;
 
-import java.util.List;
-
 import com.gzd.model.E_user;
+
+import java.util.List;
 
 public interface UserService {
 

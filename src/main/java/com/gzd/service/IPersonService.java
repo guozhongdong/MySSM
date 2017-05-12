@@ -1,8 +1,8 @@
 package com.gzd.service;
 
-import java.util.List;
-
 import com.gzd.model.Person;
+
+import java.util.List;
 
 public interface IPersonService {
 
